@@ -1,0 +1,35 @@
+{
+  "name": "demo-http-amqp-pub-sub-ws",
+  "version": "1.0.0",
+  "description": "Demo for components using HTTP, AMQP, Pub/Sub, WebSockets",
+  "main": "src/index.api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/XploraTechnologiesAS/demo-http-amqp-pub-sub-ws.git"
+  },
+  "keywords": [
+    "http",
+    "amqp",
+    "pub",
+    "sub",
+    "pubsub",
+    "ws",
+    "websockets",
+    "queues"
+  ],
+  "author": "Xplora R&D Team",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/XploraTechnologiesAS/demo-http-amqp-pub-sub-ws/issues"
+  },
+  "homepage": "https://github.com/XploraTechnologiesAS/demo-http-amqp-pub-sub-ws#readme",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "redis": "^4.6.10"
+  }
+}
