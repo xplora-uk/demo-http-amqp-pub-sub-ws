@@ -4,6 +4,9 @@
   "description": "Demo for components using HTTP, AMQP, Pub/Sub, WebSockets",
   "main": "src/index.api.js",
   "scripts": {
+    "start": "node .",
+    "start:api": "node .",
+    "start:worker": "node src/index.worker.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

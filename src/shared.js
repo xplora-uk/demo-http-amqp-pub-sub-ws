@@ -3,6 +3,9 @@ const redis = require('redis');
 
 function makeConfig(penv = process.env) {
   return {
+    http: {
+      port: penv.HTTP_PORT || 8080,
+    },
     amqp: {
       url: penv.AMQP_URL || 'amqp://127.0.0.1:5672',
       queueName: penv.AMQP_QUEUE_NAME || 'tasks',
@@ -50,7 +53,7 @@ async function prepareRedisClient(logger, { url, topic = 'tasks-completed' }, ha
 
   if (handleTopicMessage) { // subscribe to topic on API side
     logger.info(' - subscribing to redis topic...', topic);
-    await redisClient.subscribe(topic, handleTopicMessage);
+    await client.subscribe(topic, handleTopicMessage);
     logger.info(' - subscribing to redis topic...', topic, ', done!');
   }
 

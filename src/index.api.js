@@ -12,7 +12,8 @@ async function main() {
   let redisClient = null, queueChannel = null;
 
   async function handleTasksCompleted(msg) {
-    logger.log('new message handleTasksCompleted', msg);
+    const msgObj = JSON.parse(msg);
+    logger.log('new message handleTasksCompleted', msgObj);
 
     // TODO: inform user via WebSockets
   }
@@ -38,12 +39,12 @@ async function main() {
 
     // inform workers via AMQP in the background
     // Note: buffer is a binary representation of the message
-    queueChannel.sendToQueue(config.amqp.queueName, Buffer.from(JSON.stringify(message)))
-      .then(() => {
-        logger.info('message sent to queue', { q: config.amqp.queueName, message });
-      }).catch(err => {
-        logger.error('message not sent to queue', { q: config.amqp.queueName, message, err });
-      });
+    try {
+      await queueChannel.sendToQueue(config.amqp.queueName, Buffer.from(JSON.stringify(message)));
+      logger.info('message sent to queue', config.amqp.queueName, message);
+    } catch (err) {
+      logger.error('message not sent to queue', config.amqp.queueName, message, err);
+    }
   }
 
   const app = express();

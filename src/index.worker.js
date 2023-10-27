@@ -1,6 +1,5 @@
 require('dotenv').config(); // side-effect process.env - loads env vars from .env file
-const amqplib = require('amqplib');
-const { prepareRedisClient, makeConfig } = require('./shared');
+const { prepareRedisClient, makeConfig, prepareQueueChannel } = require('./shared');
 
 
 main();
